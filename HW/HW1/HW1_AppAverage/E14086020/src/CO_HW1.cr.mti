@@ -1,0 +1,15 @@
+C:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/CS.v {1 {vlog -work work -stats=none C:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/CS.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module CS
+
+Top level modules:
+	CS
+
+} {} {}} C:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/testfixture.v {1 {vlog -work work -stats=none C:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/testfixture.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module test
+
+Top level modules:
+	test
+
+} {} {}}

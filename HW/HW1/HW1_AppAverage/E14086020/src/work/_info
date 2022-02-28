@@ -1,0 +1,53 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/bob90/verilog/IC_context_practice/2015/testbench
+vCS
+!s110 1645522672
+!i10b 1
+!s100 Zh:zfb_b<JF4KVg@zo36_2
+Ig9?KKPbVJN=RmG8A60m773
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dC:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src
+w1645522512
+8C:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/CS.v
+FC:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/CS.v
+L0 2
+Z2 OV;L;10.6d;65
+r1
+!s85 0
+31
+!s108 1645522672.000000
+!s107 C:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/CS.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/CS.v|
+!i113 1
+Z3 o-work work
+Z4 tCvgOpt 0
+n@c@s
+vtest
+!s110 1645527570
+!i10b 1
+!s100 :K5Z[57hRZhQTVYLC4oXQ3
+IfLGO1geNj2adkBWk[;^_^3
+R0
+R1
+w1645527564
+8C:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/testfixture.v
+FC:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/testfixture.v
+L0 7
+R2
+r1
+!s85 0
+31
+!s108 1645527570.000000
+!s107 C:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/testfixture.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bob90/verilog/compu_organ/HW/HW1/HW1_AppAverage/F740XXXXX/src/testfixture.v|
+!i113 1
+R3
+R4
