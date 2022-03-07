@@ -1,0 +1,52 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_pro/18.1
+vtraffic_light
+!s110 1646660362
+!i10b 1
+!s100 OQ2G0EKRT6IOhAQ]D2lAU2
+I1=:TI<hMFnQ0I@hE]TPA<3
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dC:/Users/bob90/verilog/compu_organ/HW/HW2/src
+w1646660358
+8C:/Users/bob90/verilog/compu_organ/HW/HW2/src/traffic_light.v
+FC:/Users/bob90/verilog/compu_organ/HW/HW2/src/traffic_light.v
+L0 1
+Z2 OV;L;10.6d;65
+r1
+!s85 0
+31
+!s108 1646660362.000000
+!s107 C:/Users/bob90/verilog/compu_organ/HW/HW2/src/traffic_light.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bob90/verilog/compu_organ/HW/HW2/src/traffic_light.v|
+!i113 1
+Z3 o-work work
+Z4 tCvgOpt 0
+vtraffic_light_tb
+!s110 1646658067
+!i10b 1
+!s100 <ERDloGXddDEd3[Ul6BXU0
+IJk[=aCI1K@nhfGOlabliQ1
+R0
+R1
+w1643250536
+8C:/Users/bob90/verilog/compu_organ/HW/HW2/src/traffic_light_tb.v
+FC:/Users/bob90/verilog/compu_organ/HW/HW2/src/traffic_light_tb.v
+L0 7
+R2
+r1
+!s85 0
+31
+!s108 1646658067.000000
+!s107 C:/Users/bob90/verilog/compu_organ/HW/HW2/src/traffic_light_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bob90/verilog/compu_organ/HW/HW2/src/traffic_light_tb.v|
+!i113 1
+R3
+R4

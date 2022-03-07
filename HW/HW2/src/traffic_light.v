@@ -7,82 +7,128 @@ module traffic_light (
     output reg Y
 );
 
+reg [2:0]state, next_state;
+reg [9:0]counter;
+reg counter_reset;
 //write your code here
-reg [2:0]state;
-reg [9:0]cycle;
-
 always @(posedge clk or posedge rst) begin
     if(rst)begin
         state <= 0;
-        cycle <= 0;
-        R <= 0;
-        G <= 0;
-        B <= 0;
     end
     else begin
-        if(state == 0) begin //green 512
-            R <= 0;
-            G <= 1;
-            B <= 0;
-            
-            if (cycle == 512) begin
-                state <= 1;
-                cycle <= 0;
-            end
-            else begin
-                cycle <= cycle + 1;
-            end
+        if(pass)begin
+            state <= 0;
         end
-        else if(state == 1) begin //None 64
-            R <= 0;
-            G <= 0;
-            B <= 0;
-            if (cycle == 64) begin
-                state <= 2;
-                cycle <= 0;
-            end
-            else begin
-                cycle <= cycle + 1;
-            end
-        end
-        else if(state == 2) begin //green 64
-            R <= 0;
-            G <= 1;
-            B <= 0;
-            if (cycle == 64) begin
-                state <= 3;
-                cycle <= 0;
-            end
-            else begin
-                cycle <= cycle + 1;
-            end
-        end
-        else if(state == 3) begin //None 64
-            R <= 0;
-            G <= 0;
-            B <= 0;
-            if (cycle == 64) begin
-                state <= 4;
-                cycle <= 0;
-            end
-            else begin
-                cycle <= cycle + 1;
-            end
-        end
-        else if(state == 4) begin //green 64
-            R <= 0;
-            G <= 1;
-            B <= 0;
-            if (cycle == 64) begin
-                state <= 5;
-                cycle <= 0;
-            end
-            else begin
-                cycle <= cycle + 1;
-            end
+        else begin
+            state <= next_state;
         end
     end
 end
 
+//handle output
+always @(state or counter) begin
+    case(state)
+        3'd0: begin//green 512
+           if(counter == 511)begin
+               counter_reset = 1;
+               next_state = 1;
+           end 
+           else begin
+               counter_reset = 0;
+               next_state = 0;
+           end
+           R = 0;
+           G = 1;
+           Y = 0;
+        end 
+        3'd1: begin//none 64
+            if(counter == 63)begin
+               counter_reset = 1;
+               next_state = 2;
+           end 
+           else begin
+               counter_reset = 0;
+               next_state = 1;
+           end
+           R = 0;
+           G = 0;
+           Y = 0;
+        end
+        3'd2: begin//green 64
+            if(counter == 63)begin
+               counter_reset = 1;
+               next_state = 3;
+           end 
+           else begin
+               counter_reset = 0;
+               next_state = 2;
+           end
+           R = 0;
+           G = 1;
+           Y = 0;
+        end
+        3'd3: begin//none 64
+            if(counter == 63)begin
+               counter_reset = 1;
+               next_state = 4;
+           end 
+           else begin
+               counter_reset = 0;
+               next_state = 3;
+           end
+           R = 0;
+           G = 0;
+           Y = 0;
+        end
+        3'd4: begin//green 64
+            if(counter == 63)begin
+               counter_reset = 1;
+               next_state = 5;
+           end 
+           else begin
+               counter_reset = 0;
+               next_state = 4;
+           end
+           R = 0;
+           G = 1;
+           Y = 0;
+        end
+        3'd5: begin//yellow 256
+            if(counter == 255)begin
+               counter_reset = 1;
+               next_state = 6;
+           end 
+           else begin
+               counter_reset = 0;
+               next_state = 5;
+           end
+           R = 0;
+           G = 0;
+           Y = 1;
+        end
+        3'd6: begin//red 512
+            if(counter == 511)begin
+               counter_reset = 1;
+               next_state = 0;
+           end 
+           else begin
+               counter_reset = 0;
+               next_state = 6;
+           end
+           R = 1;
+           G = 0;
+           Y = 0;
+        end
+    endcase  
+end
 
+//handle counter
+always @(posedge clk) begin
+    if((pass && state != 0) || counter_reset == 1|| rst)begin
+        counter <= 0;
+    end
+    else begin
+        counter <= counter + 1;
+    end
+end
 endmodule

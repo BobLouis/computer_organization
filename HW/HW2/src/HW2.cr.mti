@@ -1,0 +1,8 @@
+C:/Users/bob90/verilog/compu_organ/HW/HW2/src/traffic_light_tb.v {1 {vlog -work work -stats=none C:/Users/bob90/verilog/compu_organ/HW/HW2/src/traffic_light_tb.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module traffic_light_tb
+
+Top level modules:
+	traffic_light_tb
+
+} {} {}}
