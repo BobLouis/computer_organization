@@ -40,6 +40,7 @@ initial begin
     $readmemh("./main2.hex", TOP.i_DM.Memory_byte2); 
     $readmemh("./main3.hex", TOP.i_IM.Memory_byte3);
     $readmemh("./main3.hex", TOP.i_DM.Memory_byte3); 
+
     num = 0;
     gf = $fopen("./golden.hex", "r");
     while (!$feof(gf))

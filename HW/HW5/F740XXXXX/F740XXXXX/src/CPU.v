@@ -59,20 +59,30 @@ always@(posedge clk or posedge rst)begin
 		Immediate <= 32'h0;
 	else if(Instruction_Decode)begin
 		case(opcode)
+			7'b0000011:begin//LW
+				/*add your code*/
+			end
 			7'b0010011:begin//I-type
 				/*add your code*/
-				Immediate[11:0] <= instr_out[31:20];
-				Immediate[31:12] <= (instr_out[31])?20'hfffff:20'h0;
+			end
+			7'b1100111:begin//JALR-type
+				/*add your code*/
 			end
 			7'b0100011:begin//S-type
 				/*add your code*/
-				Immediate[31:12] <= (instr_out[31])?20'hfffff:20'h0;
-				Immediate [11:5] <= instr_out[31:25];
-				Immediate [4:0]  <= instr_out[11:7] ;
+			end
+			7'b1100011:begin//B-type
+				/*add your code*/
+			end
+			7'b0010111:begin//AUIPC
+				/*add your code*/
 			end
 			7'b0110111:begin//LUI
 				Immediate[31:12] <= instr_out[31:12];
 				Immediate[11:0] <= 12'h0;
+			end
+			7'b1101111:begin//J-type
+				/*add your code*/
 			end
 		endcase
 	end
@@ -92,20 +102,23 @@ always@(posedge clk or posedge rst)begin
 				case(funct3)
 					3'b000:begin
 						case(funct7)
-							7'b0000000:begin//ADD
+							7'b0000000://ADD
 								Register[rd] <= Register[rs1] + Register[rs2];
-							end
 							7'b0100000:begin//SUB
 								/*add your code*/
-								Register[rd] <= Register[rs1] - Register[rs2];
 							end
+						endcase
+					end
+					3'b001:begin
+						case(funct7)
+							7'b0000000://SLL
+								Register[rd] <= Register[rs1] << Register[rs2][4:0];
 						endcase
 					end
 					3'b100:begin
 						case(funct7)
 							7'b0000000:begin//XOR
 								/*add your code*/
-								Register[rd] <= Register[rs1] ^ Register[rs2];
 							end
 						endcase
 					end
@@ -113,7 +126,6 @@ always@(posedge clk or posedge rst)begin
 						case(funct7)
 							7'b0000000:begin//OR
 								/*add your code*/
-								Register[rd] <= Register[rs1] | Register[rs2];
 							end
 						endcase
 					end
@@ -121,9 +133,15 @@ always@(posedge clk or posedge rst)begin
 						case(funct7)
 							7'b0000000:begin//AND
 								/*add your code*/
-								Register[rd] <= Register[rs1] & Register[rs2];
 							end
 						endcase
+					end
+				endcase
+			end
+			7'b0000011:begin
+				case(funct3)
+					3'b010:begin//LW
+						Register[rd] <= data_out;
 					end
 				endcase
 			end
@@ -134,21 +152,30 @@ always@(posedge clk or posedge rst)begin
 					end
 					3'b100:begin//XORI
 						/*add your code*/
-						Register[rd] <= Register[rs1] ^ Immediate;
 					end
 					3'b110:begin//ORI
 						/*add your code*/
-						Register[rd] <= Register[rs1] | Immediate;
 					end
 					3'b111:begin//ANDI
 						/*add your code*/
-						Register[rd] <= Register[rs1] & Immediate;
 					end
 				endcase
 			end
+			7'b1100111:begin//JALR
+				case(funct3)
+					3'b000:begin
+						/*add your code*/
+					end
+				endcase
+			end
+			7'b0010111:begin//AUIPC
+				/*add your code*/
+			end
 			7'b0110111:begin//LUI
 				/*add your code*/
-				Register[rd] <= Immediate;
+			end
+			7'b1101111:begin//J-type
+				/*add your code*/
 			end
 		endcase
 	end
@@ -160,9 +187,38 @@ end
 always@(posedge clk or posedge rst)begin
 	if(rst)
 		instr_addr <= 0;
-	else if(Write_Back)begin//default
-		/*add your code*/
-		instr_addr <= instr_addr + 4;
+	else if(Write_Back)begin
+		case(opcode)
+			7'b1100111:begin
+				case(funct3)
+					3'b000:begin//JALR
+						/*add your code*/
+					end
+				endcase
+			end
+			7'b1100011:begin//B-type
+				case(funct3)
+					3'b000:begin//BEQ
+						/*add your code*/
+					end
+					3'b001:begin//BNE
+						/*add your code*/
+					end
+					3'b111:begin
+						if(Register[rs1] >= Register[rs2])
+							instr_addr <= instr_addr + Immediate;
+						else
+							instr_addr <= instr_addr + 4;
+					end
+				endcase
+			end
+			7'b1101111:begin//JAL-type
+				/*add your code*/
+			end
+			default:begin//default
+				/*add your code*/
+			end
+		endcase
 	end
 end
 ////////////////////////////////////////////////
@@ -174,9 +230,11 @@ always@(posedge clk or posedge rst)begin
 		data_addr <= 32'h0;
 	else if(Execute)begin
 		case(opcode)
+			7'b0000011:begin//L-type
+				/*add your code*/
+			end
 			7'b0100011:begin//S-type
 				/*add your code*/
-				data_addr <= Register[rs1] + Immediate;
 			end
 		endcase
 	end
