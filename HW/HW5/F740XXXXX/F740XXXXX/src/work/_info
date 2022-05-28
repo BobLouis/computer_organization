@@ -1,0 +1,84 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\bob90\verilog\computer_organization\HW\HW5\F740XXXXX\F740XXXXX\src
+vCPU
+!i10b 1
+!s100 U73NbYKdK1JcE5]X;^gOn3
+I;YQ<iiT=AV<IP4W3z5^c^0
+Z1 V?E5IbGG8jJKBmAR5BZCfN3
+Z2 dC:\Users\bob90\verilog\computer_organization\HW\HW5\F740XXXXX\F740XXXXX\src
+w1652634402
+Z3 8CPU.v
+Z4 FCPU.v
+L0 1
+Z5 OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1652634446.445000
+!s107 CPU.v|
+Z6 !s90 -reportprogress|300|CPU.v|
+!s101 -O0
+o-O0
+Z7 n@c@p@u
+vSRAM
+Z8 I3W`]oFdHo9oP<[Ih_Pn4@2
+Z9 V]Kn;]lj`RWbZ;7b@mV1]g3
+R2
+Z10 w1644235658
+Z11 FSRAM.v
+Z12 8C:/Users/bob90/verilog/computer_organization/HW/HW5/F740XXXXX/F740XXXXX/src/top.v
+Z13 FC:/Users/bob90/verilog/computer_organization/HW/HW5/F740XXXXX/F740XXXXX/src/top.v
+L0 3
+R5
+r1
+31
+Z14 !s108 1652623704.901000
+Z15 !s107 SRAM.v|CPU.v|C:/Users/bob90/verilog/computer_organization/HW/HW5/F740XXXXX/F740XXXXX/src/top.v|
+Z16 !s90 -reportprogress|300|-work|work|C:/Users/bob90/verilog/computer_organization/HW/HW5/F740XXXXX/F740XXXXX/src/top.v|
+Z17 o-work work -O0
+Z18 n@s@r@a@m
+Z19 !s100 S@YfFGL8Ak3iXVNbE7mdc1
+!i10b 1
+!s85 0
+!s101 -O0
+vtop
+Z20 !s100 A`R_o>96[XjUE02`OQf`32
+Z21 IQSJ4G=elS=87g4>VR<E5i2
+Z22 VCS`:UbVMcNfF?nKfKBYYJ0
+R2
+R10
+R12
+R13
+L0 6
+R5
+r1
+31
+R14
+R15
+R16
+R17
+!i10b 1
+!s85 0
+!s101 -O0
+vtop_tb
+Z23 !s100 j:MO<B1O^J33ZYZ7i3R]B1
+Z24 IJQ46[Q^@;eS2P3=z;<Sz?1
+Z25 VN7^ihbmI9enFg9D=Qco243
+R2
+R10
+Z26 8C:/Users/bob90/verilog/computer_organization/HW/HW5/F740XXXXX/F740XXXXX/src/top_tb.v
+Z27 FC:/Users/bob90/verilog/computer_organization/HW/HW5/F740XXXXX/F740XXXXX/src/top_tb.v
+L0 14
+R5
+r1
+31
+Z28 !s90 -reportprogress|300|-work|work|C:/Users/bob90/verilog/computer_organization/HW/HW5/F740XXXXX/F740XXXXX/src/top_tb.v|
+R17
+Z29 !s108 1652623704.995000
+Z30 !s107 C:/Users/bob90/verilog/computer_organization/HW/HW5/F740XXXXX/F740XXXXX/src/top_tb.v|
+!i10b 1
+!s85 0
+!s101 -O0
