@@ -6,7 +6,6 @@
 int main(){
     unsigned int cache_size;
     unsigned int block_size;
-    unsigned int byte_offset;
     unsigned int word_offset_size;
     unsigned int word_offset;
     unsigned int idx_size;

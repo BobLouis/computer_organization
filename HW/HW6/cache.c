@@ -9,39 +9,47 @@ typedef struct Cache
 } Cache;
 
 int main(){
-    int cache_size;
-    int block_size;
-    int asso;
-    int re_al; //0 => FIFO=0, LRU =1
-    int set_size;
-    int addr; //word address
+    unsigned int cache_size;
+    unsigned int block_size;
+    unsigned int word_offset_size;
+    unsigned int word_offset;
+    unsigned int idx_size;
+    unsigned int idx;
+    unsigned int tag;
+    unsigned int tag_size;
+    unsigned int asso;
+    unsigned int re_al; //0 => FIFO=0, LRU =1
+    unsigned int set_size;
+    unsigned int addr; //word address
     Cache *cache; 
-    int tag;
-    int idx;
     int hit=0, miss=0;
     int cnt =0;
     float miss_rate;
     scanf("%d%d%d%d",&cache_size,&block_size,&asso,&re_al);
     set_size = cache_size/block_size;
-
+    word_offset_size = log2(block_size);
+    idx_size = log2(cache_size/block_size);
+    tag_size = 32 - word_offset_size - idx_size;
     cache = malloc(cache_size * sizeof(Cache));
-    for(int i=0;i<cache_size;++i){
+    for(int i=0;i<set_size;++i){
         cache[i].tag = 0;
         cache[i].valid = 0;
     }
     while(scanf("%d",&addr) != EOF){
         // printf("%d",addr);
-        idx = addr % set_size;
-        tag = addr >> (int)log2(set_size)+(int)log2(block_size);
+        word_offset = (addr << (32-word_offset_size))>>(32-word_offset_size);
+        idx = (addr << tag_size) >> (32 - idx_size);
+        tag = addr >> (32 - tag_size);
         switch(asso){
             case 0:
                 if(cache[idx].valid){
-                    printf("%d\n", cache[idx].tag);
+                    
                     if(cache[idx].tag == tag){
                         ++hit;
-                        continue;
+                        printf("-1\n");
                     }else{
                         ++miss;
+                        printf("%d\n", cache[idx].tag);
                         cache[idx].tag = tag;
                     }
                 }else{
