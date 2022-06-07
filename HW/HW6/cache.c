@@ -3,6 +3,7 @@
 #include <math.h>
 #include <stdbool.h>
 int LRU[8][4];
+int ful_LRU[128];
 typedef struct Cache
 {
     int tag;
@@ -33,6 +34,29 @@ void mod_LRU(int x,int idx){
     return ;
 }
 
+void ful_LRU_mod(int x){
+    int match_idx;
+    int i=1;
+    int tmp;
+    if(ful_LRU[0] == x)
+        return;
+    else{
+        while(i < 128){
+            if(ful_LRU[i] == x){
+                match_idx = i;
+                break;
+            }
+            ++i;   
+        }
+        tmp = ful_LRU[0];
+        ful_LRU[0] = x;
+        for(int i = match_idx; i > 1; --i){ //push back the array
+            ful_LRU[i] = ful_LRU[i-1];
+        }
+        ful_LRU[1] = tmp;
+    }
+}
+
 int main(){
     unsigned int cache_size;
     unsigned int block_size;
@@ -46,12 +70,16 @@ int main(){
     unsigned int re_al; //0 => FIFO=0, LRU =1
     unsigned int set_size;
     unsigned int addr; //word address
-    
-    for(int i=0; i<8; i++){
+    int fully_cnt = 0;
+    int fully_hit = 0;
+    for(int i=0; i < 8; i++){
         LRU[i][0] = 0;
         LRU[i][1] = 1;
         LRU[i][2] = 2;
         LRU[i][3] = 3;
+    }
+    for (int i = 0; i < 128 ;++i){
+        ful_LRU[i] = i;
     }
     Cache *cache; 
     int hit=0, miss=0;
@@ -69,7 +97,8 @@ int main(){
     }
     idx_size = log2(set_size);
     tag_size = 32 - word_offset_size - idx_size;
-    cache = malloc(cache_size * sizeof(Cache));
+    cache = malloc(cache_size/block_size * sizeof(Cache));
+
     for(int i=0;i<cache_size/block_size;++i){
         cache[i].tag = 0;
         cache[i].valid = 0;
@@ -153,7 +182,42 @@ int main(){
             break; 
 
             case 2:
-                
+                fully_hit = 0;
+                fully_cnt = 0;
+                while(fully_cnt<(cache_size/block_size)){//search for hit
+                    if(cache[fully_cnt].valid && cache[fully_cnt].tag == tag){
+                        ++hit;
+                        printf("-1\n");
+                        // printf("-1 read hit%d\n",fully_cnt);
+                        fully_hit = 1;
+                        ful_LRU_mod(fully_cnt);
+                        break;
+                    } 
+                    fully_cnt++;
+                }
+                fully_cnt = 0;
+                if(fully_hit == 0){
+                    while(fully_cnt<128){//write the block
+                        if(cache[fully_cnt].valid == 0){
+                            ++miss;
+                            printf("-1\n");
+                            // printf("-1 write %d\n",fully_cnt);
+                            cache[fully_cnt].tag = tag;
+                            cache[fully_cnt].valid = 1;
+                            ful_LRU_mod(fully_cnt);
+                            fully_hit = 1;
+                            break;
+                        } 
+                        fully_cnt++;
+                    }
+                }
+
+                if(fully_hit == 0){//replace the least used
+                    ++miss;
+                    printf("%d\n", cache[ful_LRU[127]].tag);//Least recent used
+                    cache[ful_LRU[127]].tag = tag;
+                    ful_LRU_mod(ful_LRU[127]);
+                } 
 
             break; 
 
