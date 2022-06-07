@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun  6 21:58:02 2022
+# Make data base, printed on Tue Jun  7 12:17:17 2022
 
 # Variables
 
@@ -55,7 +55,7 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-d6b5d749-de3a-4d94-adeb-00db4753d7fb.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-999737e8-50b5-41ce-b386-2bbd9d675e4f.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -71,9 +71,9 @@ PWD = /mnt/c/Users/bob90/verilog/computer_organization
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/74_interop
+WSL_INTEROP = /run/WSL/8_interop
 # environment
-WT_SESSION = 5015fb5f-2a7b-4698-a688-02d7616f429b
+WT_SESSION = be5e805e-19d0-4331-aa63-d8270f6861c6
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -81,7 +81,7 @@ HOME = /home/kounuki
 # environment
 LOGNAME = kounuki
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 ZSH = /home/kounuki/.oh-my-zsh
 # environment
@@ -229,6 +229,6 @@ GNUmakefile:
 # strcache performance: lookups = 16 / hit rate = 18%
 # hash-table stats:
 # Load=13/8192=0%, Rehash=0, Collisions=1/16=6%
-# Finished Make data base on Mon Jun  6 21:58:02 2022
+# Finished Make data base on Tue Jun  7 12:17:17 2022
 
  
