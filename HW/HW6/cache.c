@@ -10,7 +10,7 @@ typedef struct Cache
     int use;
 } Cache;
 
-void mod_LRU(int x,idx){
+void mod_LRU(int x,int idx){
     int tmp;
     if(LRU[idx][0]==x){
         return;
@@ -65,6 +65,7 @@ int main(){
         set_size = (cache_size/block_size)/4;
     }else if(asso==2){
         set_size = 1;
+
     }
     idx_size = log2(set_size);
     tag_size = 32 - word_offset_size - idx_size;
@@ -102,47 +103,57 @@ int main(){
                 if(cache[idx<<2].valid && cache[idx<<2].tag == tag){
                         ++hit;
                         printf("-1\n");
+                        mod_LRU(0,idx);
                 }else if(cache[(idx<<2) + 1].valid && cache[(idx<<2)+1].tag == tag){ 
-                    if(cache[(idx<<2)+1].tag == tag){
                         ++hit;
                         printf("-1\n");
+                        mod_LRU(1,idx);
                 }else if(cache[(idx<<2) + 2].valid && cache[(idx<<2)+2].tag == tag){
                         ++hit;
                         printf("-1\n");
+                        mod_LRU(2,idx);
+                
                 }else if(cache[(idx<<2) + 3].valid && cache[(idx<<2)+3].tag == tag){
                         ++hit;
                         printf("-1\n");
+                        mod_LRU(3,idx);
                 }
                 else{
                     if(cache[idx<<2].valid==0){
                         ++miss;
                         cache[idx<<2].tag = tag;
-                        cache.valid = true;
+                        cache[idx<<2].valid = true;
                         printf("-1\n");
+                        mod_LRU(0,idx);
                     }else if(cache[(idx<<2)+1].valid==0){
                         ++miss;
                         cache[(idx<<2)+1].tag = tag;
-                        cache.valid = true;
+                        cache[(idx<<2)+1].valid = true;
                         printf("-1\n");
+                        mod_LRU(1,idx);
                     }else if(cache[(idx<<2)+2].valid==0){
                         ++miss;
                         cache[(idx<<2)+2].tag = tag;
-                        cache.valid = true;
+                        cache[(idx<<2)+2].valid = true;
                         printf("-1\n");
+                        mod_LRU(2,idx);
                     }else if(cache[(idx<<2)+3].valid==0){
                         ++miss;
                         cache[(idx<<2)+3].tag = tag;
-                        cache.valid = true;
+                        cache[(idx<<2)+3].valid = true;
                         printf("-1\n");
+                        mod_LRU(3,idx);
                     }else{//change the victim
                         ++miss;
-                        printf("%d\n", cache[idx<<2+LRU[idx][3]].tag);
+                        printf("%d\n", cache[(idx<<2)+LRU[idx][3]].tag);//Least recent used
+                        cache[(idx<<2)+LRU[idx][3]].tag = tag;
+                        mod_LRU(LRU[idx][3],idx);
                     }
                 }
             break; 
 
             case 2:
-
+                
 
             break; 
 
@@ -154,6 +165,7 @@ int main(){
         ++cnt;
     }
     // printf("miss %d cnt%d\n", miss,cnt);
+    // printf("word %d idx_size%d tag_size%d\n",word_offset_size,idx_size, tag_size);
     miss_rate = (float)miss / (float)cnt;
     printf("Miss rate = %f\n",miss_rate);
     return 0;

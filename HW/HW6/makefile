@@ -4,7 +4,7 @@ exe = cache
 INPUTPATH = ./src/
 EXAMPLE = ./EXAMPLE_output/
 
-all: trace1 trace2 trace3
+all: trace1 trace2 trace3 
 
 	
 trace1: cache
@@ -14,7 +14,7 @@ trace2: cache
 	./$(exe) < $(INPUTPATH)trace2.txt > ./trace2.out
 	diff trace2.out $(EXAMPLE)trace2.out && echo "trace2 pass"
 trace3: cache
-	./$(exe) < $(INPUTPATH)trace3.txt > ./out3
+	./$(exe) < $(INPUTPATH)trace3.txt > ./trace3.out
 	diff trace3.out $(EXAMPLE)trace3.out && echo "trace3 pass"
 trace4: cache
 	./$(exe) < $(INPUTPATH)trace4.txt > ./trace4.out
